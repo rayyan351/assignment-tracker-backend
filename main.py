@@ -32,13 +32,7 @@ EMAIL_FROM = os.getenv("EMAIL_FROM")
 
 # -------------------- APP --------------------
 app = Flask(__name__)
-CORS(
-    app,
-    origins=["https://lms-frontend-mauve-nu.vercel.app"],  # frontend URL
-    supports_credentials=True,
-    methods=["GET", "POST", "OPTIONS"],
-    allow_headers=["Content-Type", "Authorization"]
-)
+CORS(app, supports_credentials=True)
 
 @app.route("/", methods=["GET"])
 def root():
