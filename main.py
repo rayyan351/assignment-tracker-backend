@@ -154,6 +154,9 @@ def jwt_required(f):
         return f(*args, **kwargs)
     return decorated
 
+@app.route("/")
+def home():
+    return {"status": "API running"}
 
 # -------------------- REGISTER --------------------
 @app.route("/api/register", methods=["POST", "OPTIONS"])
