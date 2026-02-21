@@ -32,7 +32,17 @@ EMAIL_FROM = os.getenv("EMAIL_FROM")
 
 # -------------------- APP --------------------
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(
+    app,
+    origins=["https://lms-frontend-mauve-nu.vercel.app"],  # frontend URL
+    supports_credentials=True,
+    methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"]
+)
+
+@app.route("/", methods=["GET"])
+def root():
+    return {"status": "API running successfully!"}
 
 # -------------------- DATABASE --------------------
 def init_db():
@@ -154,9 +164,7 @@ def jwt_required(f):
         return f(*args, **kwargs)
     return decorated
 
-@app.route("/")
-def home():
-    return {"status": "API running"}
+
 
 # -------------------- REGISTER --------------------
 @app.route("/api/register", methods=["POST", "OPTIONS"])
@@ -870,4 +878,7 @@ def auto_sync_loop():
             sync_user_assignments(dict(u))
 # -------------------- START --------------------
 if __name__ == "__main__":
-    app.run(port=10000)
+        # Render sets PORT automatically
+    port = int(os.environ.get("PORT", 10000))
+    print(f"🚀 Starting server on port {port}")
+    app.run(host="0.0.0.0", port=port)
