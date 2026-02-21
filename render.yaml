@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: assignment-tracker-api
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      playwright install chromium
+    startCommand: gunicorn main:app

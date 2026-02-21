@@ -1,0 +1,151 @@
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+/* ---------- CARD ---------- */
+
+.stat-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+
+  border: 1px solid #e2e8f0;
+
+  transition: all 0.25s ease;
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle hover lift */
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* glow animation */
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+/* ---------- NUMBER ---------- */
+
+.stat-number {
+  display: block;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 4px;
+
+  background: linear-gradient(135deg,#2563eb,#3b82f6);
+  background-clip:text ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* label */
+
+.stat-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ---------- ACCENTS ---------- */
+
+.stat-card.warning .stat-number {
+  background: linear-gradient(135deg,#f59e0b,#fbbf24);
+  background-clip:text ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-card.danger .stat-number {
+  background: linear-gradient(135deg,#ef4444,#f87171);
+    background-clip:text ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- ACTIVE STATE ---------- */
+
+.stat-card.active {
+  border-color: #3b82f6;
+  box-shadow: 0 10px 30px rgba(59,130,246,0.25);
+}
+
+/* animated top bar */
+
+.stat-card.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #3b82f6,
+    #6366f1,
+    #3b82f6
+  );
+
+  background-size: 200% 100%;
+  animation: moveBar 3s linear infinite;
+}
+
+@keyframes moveBar {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 200% 0%;
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 700px) {
+  .stats-bar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .stats-bar {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .stats-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+}

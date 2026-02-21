@@ -1,0 +1,8 @@
+playwright
+beautifulsoup4
+python-dotenv
+flask
+requests
+flask-cors
+pyjwt
+gunicorn

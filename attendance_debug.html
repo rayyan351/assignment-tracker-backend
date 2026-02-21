@@ -1,0 +1,322 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head id="pageHead"><script type="text/javascript">
+var aspireRootPath="https://cms.bahria.edu.pk/";
+window.LiveSite=true;
+window.AspireWebControls={};
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>
+	Attendance - Bahria University
+</title><link href="../../../Content/Bundles/Aspire.min.css" rel="stylesheet"><link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="../../../Images/apple-touch-icon.png"><link rel="apple-touch-icon" sizes="57x57" href="../../../Images/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="72x72" href="../../../Images/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="../../../Images/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="../../../Images/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="../../../Images/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="../../../Images/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="../../../Images/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="../../../Images/apple-touch-icon-180x180.png"><meta name="description" content="Campus Management System - Bahria University"></head>
+<body class="Army">
+	<form method="post" action="./StudentWiseAttendance.aspx" id="form1" autocomplete="off">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+var __cultureInfo = {"name":"en-GB","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":".","IsReadOnly":false,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"£","NaNSymbol":"NaN","CurrencyNegativePattern":1,"NumberNegativePattern":1,"PercentPositivePattern":1,"PercentNegativePattern":1,"NegativeInfinitySymbol":"-∞","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"∞","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"AM","Calendar":{"MinSupportedDateTime":"\/Date(-62135596800000)\/","MaxSupportedDateTime":"\/Date(253402282799999)\/","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2049,"IsReadOnly":false},"DateSeparator":"/","FirstDayOfWeek":1,"CalendarWeekRule":2,"FullDateTimePattern":"dddd, d MMMM yyyy h:mm:ss tt","LongDatePattern":"dddd, d MMMM yyyy","LongTimePattern":"h:mm:ss tt","MonthDayPattern":"d MMMM","PMDesignator":"PM","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"dd/MM/yyyy","ShortTimePattern":"h:mm tt","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"MMMM yyyy","AbbreviatedDayNames":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"ShortestDayNames":["Su","Mo","Tu","We","Th","Fr","Sa"],"DayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"AbbreviatedMonthNames":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""],"MonthNames":["January","February","March","April","May","June","July","August","September","October","November","December",""],"IsReadOnly":false,"NativeCalendarName":"Gregorian Calendar","AbbreviatedMonthGenitiveNames":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""],"MonthGenitiveNames":["January","February","March","April","May","June","July","August","September","October","November","December",""]},"eras":[1,"A.D.",null,0]};//]]>
+</script>
+
+<script src="/bundles/MsAjaxJs?v=D6VN0fHlwFSIWjbVzi6mZyE9Ls-4LNrSSYVGRU46XF81" type="text/javascript"></script>
+<script src="../../../Scripts/Plugins/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="/bundles/WebFormsJs?v=N8tymL9KraMLGAMFuPycfH3pXe6uUlRXdhtYv8A_jUU1" type="text/javascript"></script>
+<script src="../../../Scripts/Bundles/Aspire.min.js" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="208051C6">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="8nwEr7o+vpksIfjHQQ5uoW77E+RUytUY0avcdhZjUvXjys6Elu5eZRY/UIQ316/K9qtHo6GoVibOyFaH3nKuvnKgcB5ZDiUAM0Bhuz4+W2ItUUM0WKNcG7wa60AT1Pd5">
+</div>
+		<noscript><meta http-equiv="Refresh" content="0;URL=../../../NoJavascript.aspx?v=z3FST3SHre0ClvzJpr1ESuPd6NpdNQzHVs5M5PqNDj4kHP5%2bAy3fl4jQh6Qmzr5i0ue%2f7vEuO1%2fSCeGa%2bjo02kEah%2fyxwkXQXL%2bNevUVmXYJZJS0lzlwjNU7zUC7PM%2b7ocwREguhzzf1yRvKM9fnQ%2bczM2KPF9T3l%2frV4PnEqhrebXK0iopGDmqnN1lfZ4kQ" /></noscript>
+		<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl15', 'form1', ['tctl00$pageAlerts$up','pageAlerts_up'], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+		<div id="pageContainer" class="">
+			<header id="header" class="navbar navbar-fixed-top noselect">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a id="aSideBar" class="navbar-brand" title="" data-original-title="Show/Hide Menu"><span class="glyphicon glyphicon glyphicon-menu-hamburger" id="logIcon"></span></a>
+						<a href="../Dashboard.aspx" id="brandName" class="navbar-brand Name">Bahria University Karachi Campus</a>
+						<a href="../Dashboard.aspx" id="brandShortName" class="navbar-brand ShortName">Karachi Campus</a>
+						<a href="../Dashboard.aspx" id="brandAlias" class="navbar-brand Alias">BUKC</a>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#AccountsNavbar">
+							<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="AccountsNavbar">
+						
+						
+
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
+            <canvas width="32" height="32" style="background-color: rgb(255, 255, 255);"></canvas>
+            <span id="ProfileInfo_lblUsername" class="name">02-136252-047</span>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li class="hidden-sm hidden-xs">
+                <div>
+                    <canvas width="75" height="75" style="background-color: rgb(255, 255, 255);"></canvas>
+                    <span id="ProfileInfo_lblName" class="name">MUHAMMAD RAYYAN</span>
+                    <span id="ProfileInfo_lblEmail" class="email">02-136252-047@student.bahria.edu.pk</span>
+                </div>
+            </li>
+            <li id="ProfileInfo_liProfile">
+                <a id="ProfileInfo_hlProfile" href="../Profile.aspx">Profile</a>
+            </li>
+            <li>
+                <a id="ProfileInfo_hlLogoff" href="../Logoff.aspx?v=YNKS8nmElZsR9zfRq9VWfyNY%2b2eB97FwuiCuU6ZMowYmkgP%2bvzC3N7p94AF3gRcecZPL6MdKbVA94Q7O9ty%2bYw%3d%3d">
+                    <i class="fas fa-sign-out-alt"></i> Sign Out
+                    </a>
+            </li>
+            
+            <li id="ProfileInfo_liChangePassword">
+                <a id="ProfileInfo_hlChangePassword" href="../ChangePassword.aspx">Change Password</a>
+            </li>
+            
+        </ul>
+    </li>
+</ul>
+
+					</div>
+				</div>
+			</header>
+			<aside id="sideBar" class="noselect"><div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;"><div class="list-group panel" id="sideMenuList" style="overflow: hidden; width: auto; height: 250px;"><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/Profile.aspx">Profile Information</a><a class="list-group-item collapsed " data-parent="#sideMenuList" data-toggle="collapse" href="#sideMenuList_1">Course Registration<i aria-hidden="true" class="fa fa-caret-down pull-right"></i><i aria-hidden="true" class="fa fa-caret-right"></i></a><div class="collapse list-group-subMenu " id="sideMenuList_1"><a class="list-group-item " data-parent="#sideMenuList_1" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/CourseRegistration/RegisteredCourses.aspx">Registered Courses</a><a class="list-group-item " data-parent="#sideMenuList_1" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/CourseRegistration/RegisterRegularCourses.aspx">Register Regular Courses</a><a class="list-group-item " data-parent="#sideMenuList_1" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/CourseRegistration/OfferedCourses.aspx">View Offered Courses</a><a class="list-group-item " data-parent="#sideMenuList_1" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/CourseRegistration/CreditsTransfer.aspx">Credits Transfer</a></div><a class="list-group-item collapsed " data-parent="#sideMenuList" data-toggle="collapse" href="#sideMenuList_2">Courses<i aria-hidden="true" class="fa fa-caret-down pull-right"></i><i aria-hidden="true" class="fa fa-caret-right"></i></a><div class="collapse list-group-subMenu " id="sideMenuList_2"><a class="list-group-item " data-parent="#sideMenuList_2" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/CourseRegistration/TimeTable.aspx">Time Table</a><a class="list-group-item " data-parent="#sideMenuList_2" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/ClassAttendance/StudentWiseAttendance.aspx">Attendance</a></div><a class="list-group-item collapsed " data-parent="#sideMenuList" data-toggle="collapse" href="#sideMenuList_3">Exams<i aria-hidden="true" class="fa fa-caret-down pull-right"></i><i aria-hidden="true" class="fa fa-caret-right"></i></a><div class="collapse list-group-subMenu " id="sideMenuList_3"><a class="list-group-item " data-parent="#sideMenuList_3" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/Exams/ExamResult.aspx">Provisional Result</a><a class="list-group-item " data-parent="#sideMenuList_3" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/ExamSeatingPlan/ExamSeats">Exam Seating Plan</a><a class="list-group-item " data-parent="#sideMenuList_3" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/Exams/CommunityServices.aspx">Community Services</a></div><a class="list-group-item collapsed " data-parent="#sideMenuList" data-toggle="collapse" href="#sideMenuList_4">Underperforming Students<i aria-hidden="true" class="fa fa-caret-down pull-right"></i><i aria-hidden="true" class="fa fa-caret-right"></i></a><div class="collapse list-group-subMenu " id="sideMenuList_4"><a class="list-group-item " data-parent="#sideMenuList_4" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/ExtraTeachingSessions.aspx">Extra Teaching Sessions</a></div><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/QualityAssurance/QualityAssuranceSurveys.aspx">Quality Assurance Surveys</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/FeeManagement/FeeChallans">Fee Challans</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/StudentInformation/AcademicDocuments.aspx">Academic Documents</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/Scholarships/AvailableScholarships.aspx">Available Scholarships</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/Forms/Forms.aspx">Forms</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/StudentInformation/EUndertakings.aspx">EUndertakings</a><a class="list-group-item " data-parent="#sideMenuList" target="_blank" href="https://cms.bahria.edu.pk/Sys/Common/GoToLMS.aspx">Go To LMS</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/EmailAccount.aspx">Microsoft Email Account</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/OfficialDocuments/Documents.aspx">Official Documents</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/Undertakings/Undertakings.aspx">Undertakings</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/Pgp/Dashboard.aspx">Thesis Dashboard</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Student/ConvocationRegistration.aspx">Convocation Registration</a><a class="list-group-item " data-parent="#sideMenuList" target="_self" href="https://cms.bahria.edu.pk/Sys/Common/Feedbacks/Feedbacks.aspx">Virtual Suggestion Box</a></div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div></aside>
+
+			<div id="pageContent">
+				<div id="breadCrumb" class="hidden-sm hidden-xs"><ol class="breadcrumb"><li><a href="https://cms.bahria.edu.pk/Sys/Student/Dashboard.aspx" title="Home"><i aria-hidden="true" class="fa fa-desktop fa-1"></i></a> <a href="https://cms.bahria.edu.pk/Sys/Student/Dashboard.aspx">Home</a></li><li><a>Courses</a></li><li><a href="https://cms.bahria.edu.pk/Sys/Student/ClassAttendance/StudentWiseAttendance.aspx">Attendance</a></li></ol></div>
+				
+<div id="pageHeading">
+	<h1 id="pageTitle_h1" class="text-left">
+		<span id="pageTitle_icon" class="glyphicon glyphicon-import"></span>
+		Attendance
+	</h1>
+</div>
+
+				<div class="container-fluid">
+					<div id="pageAlerts_up">
+	
+		
+	
+</div>
+
+					
+    
+
+<div class="table-responsive">
+    
+            <table class="table table-bordered table-responsive table-condensed table-hover">
+                <caption>
+                    Spring-2026</caption>
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Code</th>
+                        <th>Registered Course Title</th>
+                        <th class="text-center">Credit<br>
+                            Hours</th>
+                        <th class="text-center">Majors</th>
+                        <th>Offered Course Title</th>
+                        <th>Class</th>
+                        <th>Teacher Name</th>
+                        <th>Fee Status</th>
+                        <th>Present Hours</th>
+                        <th>Absent Hours</th>
+                        <th>Total Hours</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td class="text-center">GSC 110</td>
+                                <td>Applied Calculus &amp; Analytical Geometry</td>
+                                <td class="text-center">3</td>
+                                <td class="text-center">N/A </td>
+                                <td>Applied Calculus &amp; Analytical Geometry</td>
+                                <td>BS (AI)-2 (A) Morning</td>
+                                <td>DR.OYOON ABDUL RAZZAQ </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">10.0 :83.33%</td>
+                                <td class="text-center">2.0 </td>
+                                <td class="text-center">12.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=At8repg8YY6V1wBsxJiZuGEl7FswAxXTCBT6oSnxBnoVeljmZq7VNl22trsAcLcwt3UwEIRFNf%2fbB1Ino3j%2fiA%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="text-center">2</td>
+                                <td class="text-center">CEN 122</td>
+                                <td>Digital Design</td>
+                                <td class="text-center">2</td>
+                                <td class="text-center">N/A </td>
+                                <td>Digital Design</td>
+                                <td>BS (AI)-2 (A) Morning</td>
+                                <td>AMNA IFTIKHAR </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">7.0 :87.5%</td>
+                                <td class="text-center">1.0 </td>
+                                <td class="text-center">8.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=Wxyb%2fltvsYQCNtT%2fxeoPIE8MeR6hz3Zdqe9qrGvUiuFCOr88HYxgwbmoeuCQILiJB0h7MjHJc15XldJGW%2b%2bnQw%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="text-center">3</td>
+                                <td class="text-center">ENG 101</td>
+                                <td>Functional English</td>
+                                <td class="text-center">3</td>
+                                <td class="text-center">N/A </td>
+                                <td>Functional English</td>
+                                <td>BS (AI)-2 (A) Morning</td>
+                                <td>SHEHLA ANWER KURD </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">11.0 :100%</td>
+                                <td class="text-center">0.0 </td>
+                                <td class="text-center">11.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=9SmpLxDXgVGFesUkVormQL2wbiP1PYgqeIigHveA46JvaSssr1BNCgzepR5Vly3QI1jgSiT%2fAIwUvhIG6jE5Hw%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="text-center">4</td>
+                                <td class="text-center">CSC 210</td>
+                                <td>Object Oriented Programming</td>
+                                <td class="text-center">3</td>
+                                <td class="text-center">N/A </td>
+                                <td>Object Oriented Programming</td>
+                                <td>BS (AI)-2 (A) Morning</td>
+                                <td>SALAS AKBAR </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">12.0 :100%</td>
+                                <td class="text-center">0.0 </td>
+                                <td class="text-center">12.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=CZlJWRDJW%2fq6FPdpAdJ0jXuW28fYlA6iU0Afr1fpIgrpuThUagiIHixfd9Gz9nuap9A7ie2dBW7MLlOt5%2bNF9w%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="text-center">5</td>
+                                <td class="text-center">CSL 210</td>
+                                <td>Object Oriented Programming Lab</td>
+                                <td class="text-center">1</td>
+                                <td class="text-center">N/A </td>
+                                <td>Object Oriented Programming Lab</td>
+                                <td>BS (AI)-2 (A) Morning</td>
+                                <td>SALAS AKBAR </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">12.0 :100%</td>
+                                <td class="text-center">0.0 </td>
+                                <td class="text-center">12.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=eZZxz6Sqppv%2fdQh6%2bYb0vp%2bU7ubwdX9g1TvilEpKGgrTQwI8Sx0qq%2b5hmymcnvS2Rzv8LnnoQyhQUPkGTZRMZw%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="text-center">6</td>
+                                <td class="text-center">GSC 122</td>
+                                <td>Probability &amp; Statistics</td>
+                                <td class="text-center">3</td>
+                                <td class="text-center">N/A </td>
+                                <td>Probability &amp; Statistics</td>
+                                <td>BS (AI)-2 (A) Morning</td>
+                                <td>ISHTIAQ AHMED </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">9.0 :75%</td>
+                                <td class="text-center">3.0 </td>
+                                <td class="text-center">12.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=ty2FIVKFlmAU5o7pg9vjQMT5DDv1NnSvdiRVv0ACmedt08KdzTl%2bMiMF2KKaTz9hpOeY63nG9j9iu41Bx83g3g%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="text-center">7</td>
+                                <td class="text-center">ISL 203</td>
+                                <td>Fahm-e-Quran–I</td>
+                                <td class="text-center">1</td>
+                                <td class="text-center">N/A </td>
+                                <td>Fahm-e-Quran–I</td>
+                                <td>BS (AI)-2 (A) Morning</td>
+                                <td>GHULAM MUNTAQA </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">3.0 :100%</td>
+                                <td class="text-center">0.0 </td>
+                                <td class="text-center">3.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=bNbLUZe7I6mQXNVJPLPMjfzFSP71%2b0hlJjDid5rW0vBYNQ2l%2btJIQK5LluZcdNDtvao8mSQ26otslpQGE9QQ3Q%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="text-center">8</td>
+                                <td class="text-center">PAK 103</td>
+                                <td>Pakistan Studies &amp; Global Perspective</td>
+                                <td class="text-center">2</td>
+                                <td class="text-center">N/A </td>
+                                <td>Pakistan Studies &amp; Global Perspective</td>
+                                <td>BS (AI)-2 (A) Morning</td>
+                                <td>SUNDAS QURESHI </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">6.0 :100%</td>
+                                <td class="text-center">0.0 </td>
+                                <td class="text-center">6.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=Pa4RU1wzgL2%2bEgIDVShjbYdJm12yigBcquf%2fF%2ftiAsGUIDMhsMlbimIpA%2fdxsl1UL4TVk2dYDc0VKp6eKVLpnw%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="text-center">9</td>
+                                <td class="text-center">CEL 122</td>
+                                <td>Digital Design Lab</td>
+                                <td class="text-center">1</td>
+                                <td class="text-center">N/A </td>
+                                <td>Digital Design Lab</td>
+                                <td>BS (AI)-2 (B) Morning</td>
+                                <td>LUBNA RIAZ </td>
+                                <td class="text-center">Paid </td>
+                                <td class="text-center">12.0 :100%</td>
+                                <td class="text-center">0.0 </td>
+                                <td class="text-center">12.0 </td>
+                                <td class="text-center">
+                                    <a href="AttendanceSummary.aspx?v=YZpS%2fZVTmA2%2bNFMfNiBh4qSFgGxEqLzUiPKIxsE6LfwMID%2bHT6TpNj7vGrM8t0%2fI5Q23EcriF2kBi07Y8OJflA%3d%3d" target="_blank">Detail</a></td>
+                            </tr>
+                        
+                </tbody>
+            </table>
+        
+</div>
+
+
+				</div>
+			</div>
+		</div>
+		<footer id="footer" class="noselect">
+			2026 © <a href="https://bahria.edu.pk/" target="_blank">Bahria University</a>
+		</footer>
+		<input type="hidden" name="ctl00$hfJsEnabled" id="hfJsEnabled" value="0">
+	</form>
+
+
+<div class="ScrollToTop" title="Scroll to Top"><span><span class="fa fa-4x fa-arrow-circle-up"></span></span></div><div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true" id="alertModal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="alertModalLabel"></h4></div><div class="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-primary" id="yes">Yes</button><button type="button" class="btn btn-default" data-dismiss="modal">No</button></div></div></div></div></body></html>

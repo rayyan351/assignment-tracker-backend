@@ -1,0 +1,80 @@
+/* ---------- GRID ---------- */
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- CARD ---------- */
+
+.skeleton-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+
+  border: 1px solid #e2e8f0;
+
+  position: relative;
+  overflow: hidden;
+
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* ---------- SHIMMER EFFECT ---------- */
+
+.skeleton-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200px;
+  height: 100%;
+  width: 200px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+
+  animation: shimmer 1.6s infinite;
+}
+
+/* ---------- LINES ---------- */
+
+.skeleton-line {
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.skeleton-line.title {
+  height: 18px;
+  width: 65%;
+}
+
+.skeleton-line.small {
+  width: 40%;
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
