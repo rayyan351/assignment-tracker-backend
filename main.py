@@ -873,7 +873,9 @@ def auto_sync_loop():
 
 
 # -------------------- START --------------------
-threading.Thread(target=auto_sync_loop, daemon=True).start()
+@app.before_first_request
+def start_background_tasks():
+    threading.Thread(target=auto_sync_loop, daemon=True).start()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
