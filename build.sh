@@ -2,4 +2,5 @@
 
 pip install -r requirements.txt
 
-python -m playwright install chromium
+# install playwright browsers inside project
+PLAYWRIGHT_BROWSERS_PATH=0 python -m playwright install chromium

@@ -565,7 +565,7 @@ def sync_user_assignments(user):
 
         # ---------------- PLAYWRIGHT LOGIN ----------------
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True,args=["--no-sandbox", "--disable-dev-shm-usage"])
+            browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-dev-shm-usage" ,"--disable-gpu"])
             page = browser.new_page()
 
             page.goto("https://cms.bahria.edu.pk/", timeout=60000)
