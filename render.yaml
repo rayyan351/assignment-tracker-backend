@@ -3,5 +3,5 @@ services:
     name: lms-tracker-api
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn main:app"
+    startCommand: "gunicorn -b 0.0.0.0:$PORT main:app --workers 1 --timeout 120"
     plan: free
