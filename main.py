@@ -16,6 +16,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+)
+
+logger = logging.getLogger(__name__)
+
 # -------------------- CONFIG --------------------
 JWT_SECRET = os.getenv(
     "JWT_SECRET",
@@ -152,7 +161,7 @@ def jwt_required(f):
             g.user = dict(user)
 
         except Exception as e:
-            print("JWT ERROR:", e)
+            logger.error(f"JWT ERROR: {e}")
             return jsonify({"success": False}), 401
 
         return f(*args, **kwargs)
@@ -483,7 +492,7 @@ def send_weekly_summary(user):
 # -------------------- EMAIL --------------------
 def send_email(to, subject, body):
     try:
-        print(f"📧 Sending email to {to}")
+        logger.info(f"📧 Sending email to {to}")
 
         msg = MIMEText(body, "html")
         msg["From"] = EMAIL_FROM
@@ -495,10 +504,10 @@ def send_email(to, subject, body):
             server.login(SMTP_USER, SMTP_PASS)
             server.send_message(msg)
 
-        print("✅ Email sent successfully")
+        logger.info("✅ Email sent successfully")
 
     except Exception as e:
-        print("❌ EMAIL ERROR:", e)
+        logger.error(f"❌ EMAIL ERROR: {e}")
 
 
 
@@ -530,10 +539,10 @@ def send_assignment_alert(db, user, assignment):
         )
         db.commit()
 
-        print("📨 Email log saved")
+        logger.info("📨 Email log saved")
 
     except Exception as e:
-        print("❌ Failed to send assignment alert:", e)
+        logger.error(f"❌ Assignment alert email error: {e}")
 
 
 
@@ -551,7 +560,7 @@ def sync_user_assignments(user):
         ).fetchone()
 
         if existing and existing["syncing"] == 1:
-            print("⚠ Already syncing, skipping...")
+            logger.warning("⚠ Already syncing, skipping...")
             return
 
         # Mark as syncing
@@ -561,7 +570,7 @@ def sync_user_assignments(user):
         )
         conn.commit()
 
-        print("🔄 Syncing LMS for", user["enrollment"])
+        logger.info(f"🔄 Syncing LMS for {user['enrollment']}")
 
         # ---------------- PLAYWRIGHT LOGIN ----------------
         with sync_playwright() as p:
@@ -650,7 +659,7 @@ def sync_user_assignments(user):
                                 )
                                 deadline = deadline_obj.isoformat()
                             except Exception as parse_error:
-                                print("❌ Date parse failed:", match.group(0))
+                                logger.warning(f"❌ Date parse failed: {match.group(0)}")
         
                     # ---------------- SAVE TO DATABASE ----------------
                     key = f"{cname}-{no}"
@@ -674,7 +683,7 @@ def sync_user_assignments(user):
                     (user["id"], cname, no, title, deadline, submitted)
                     )
                     if is_new:
-                       print("🆕 New assignment detected:", cname, no)
+                       logger.info(f"🆕 New assignment detected: {cname} {no}")
 
                     # 🔥 SEND EMAIL ONLY IF NEW
                     if is_new:
@@ -686,7 +695,7 @@ def sync_user_assignments(user):
                         })
 
             # ---------------- ATTENDANCE SYNC ----------------
-            print("📊 Checking attendance...")
+            logger.info("📊 Checking attendance...")
 
             # ✅ USE SAME PAGE (already logged into CMS)
             page.goto(
@@ -700,7 +709,7 @@ def sync_user_assignments(user):
             html = page.content()
 
             DEBUG_PATH = os.path.join(os.getcwd(), "attendance_debug.html")
-            print("🧪 Writing debug HTML to:", DEBUG_PATH)
+            logger.info(f"🧪 Writing debug HTML to: {DEBUG_PATH}")
 
             with open(DEBUG_PATH, "w", encoding="utf-8") as f:
                 f.write(html)
@@ -711,9 +720,9 @@ def sync_user_assignments(user):
 
 
             if not table:
-                print("❌ Attendance table NOT found")
+                logger.error("❌ Attendance table NOT found")
             else:
-                print("✅ Attendance table found")
+                logger.info("✅ Attendance table found")
 
                 rows = table.find_all("tr")[1:]
 
@@ -785,7 +794,7 @@ def sync_user_assignments(user):
                     conn.commit()
 
 
-            print("✅ Attendance sync complete")            
+            logger.info("✅ Attendance sync complete")           
 
             browser.close()
 
@@ -796,14 +805,14 @@ def sync_user_assignments(user):
         )
         conn.commit()
 
-        print("✅ Sync done for", user["enrollment"])
+        logger.info(f"✅ Sync done for {user['enrollment']}")
 
         check_24hr_deadlines(user)
         if datetime.now().weekday() == 6:  # Sunday
          send_weekly_summary(user)
 
     except Exception as e:
-        print("❌ SYNC ERROR:", e)
+        logger.error(f"❌ SYNC ERROR: {e}")
 
         # 🔥 CRITICAL: ALWAYS RESET SYNC FLAG ON ERROR
         cur.execute(
@@ -838,7 +847,7 @@ def send_attendance_alert(user, course, status, present, total):
         send_email(user["email"], subject, body)
 
     except Exception as e:
-        print("❌ Attendance email error:", e)
+        logger.error(f"❌ Attendance email error: {e}")
 
 
 @app.route("/api/sync", methods=["POST"])
@@ -856,10 +865,10 @@ def manual_sync():
 # -------------------- AUTO SYNC --------------------
 def auto_sync_loop():
     while True:
-        print("⏳ Waiting for next auto sync...")
+        logger.info("⏳ Waiting for next auto sync...")
         time.sleep(AUTO_SYNC_INTERVAL)
 
-        print("🔁 Running auto sync...")
+        logger.info("🔁 Running auto sync...")
 
         conn = sqlite3.connect("assignments.db")
         conn.row_factory = sqlite3.Row
@@ -877,5 +886,5 @@ threading.Thread(target=auto_sync_loop, daemon=True).start()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
-    print(f"🚀 Starting server on port {port}")
+    logger.info(f"🚀 Starting server on port {port}")
     app.run(host="0.0.0.0", port=port)
