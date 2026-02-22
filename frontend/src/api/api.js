@@ -1,4 +1,4 @@
-const API = "http://127.0.0.1:10000/api";
+const API = "https://assignment-tracker-backend-obuv.onrender.com/api";
 
 export async function api(path, options = {}) {
   const token = localStorage.getItem("token");
