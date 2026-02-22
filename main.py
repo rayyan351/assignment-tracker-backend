@@ -565,7 +565,7 @@ def sync_user_assignments(user):
 
         # ---------------- PLAYWRIGHT LOGIN ----------------
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(headless=True,args=["--no-sandbox", "--disable-dev-shm-usage"])
             page = browser.new_page()
 
             page.goto("https://cms.bahria.edu.pk/", timeout=60000)
@@ -870,9 +870,12 @@ def auto_sync_loop():
 
         for u in users:
             sync_user_assignments(dict(u))
+
+
 # -------------------- START --------------------
+threading.Thread(target=auto_sync_loop, daemon=True).start()
+
 if __name__ == "__main__":
-        # Render sets PORT automatically
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Starting server on port {port}")
     app.run(host="0.0.0.0", port=port)

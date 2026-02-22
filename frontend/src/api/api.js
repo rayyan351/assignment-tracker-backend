@@ -1,13 +1,12 @@
-const API = "https://assignment-tracker-backend-7xiw.onrender.com/api";
+const API = "http://127.0.0.1:10000/api";
 
 export async function api(path, options = {}) {
   const token = localStorage.getItem("token");
 
   const res = await fetch(`${API}${path}`, {
-    mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      ...(token && { Authorization: `Bearer ${token}` })
+      ...(token && { Authorization: token })
     },
     ...options
   });

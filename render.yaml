@@ -1,24 +1,7 @@
 services:
   - type: web
-    name: assignment-tracker-api
+    name: lms-tracker-api
     env: python
-    plan: starter
-    buildCommand: >
-      pip install --upgrade pip &&
-      pip install -r requirements.txt &&
-      playwright install chromium --with-deps
-    startCommand: gunicorn main:app --bind 0.0.0.0:$PORT
-    envVars:
-      - key: JWT_SECRET
-        fromDatabase: true
-      - key: SMTP_HOST
-        fromDatabase: true
-      - key: SMTP_PORT
-        fromDatabase: true
-      - key: SMTP_USER
-        fromDatabase: true
-      - key: SMTP_PASS
-        fromDatabase: true
-      - key: EMAIL_FROM
-        fromDatabase: true
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn main:app"
     plan: free
