@@ -13,6 +13,7 @@ from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 import re
 from dotenv import load_dotenv
+import requests
 
 load_dotenv()
 
@@ -37,6 +38,7 @@ SMTP_HOST = os.getenv("SMTP_HOST")
 SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASS = os.getenv("SMTP_PASS")
+BREVO_API_KEY = os.getenv("BREVO_API_KEY")
 EMAIL_FROM = os.getenv("EMAIL_FROM")
 
 # -------------------- APP --------------------
@@ -492,22 +494,37 @@ def send_weekly_summary(user):
 # -------------------- EMAIL --------------------
 def send_email(to, subject, body):
     try:
-        logger.info(f"📧 Sending email to {to}")
+        logging.info(f"📧 Sending email to {to}")
 
-        msg = MIMEText(body, "html")
-        msg["From"] = EMAIL_FROM
-        msg["To"] = to
-        msg["Subject"] = subject
+        url = "https://api.brevo.com/v3/smtp/email"
 
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-            server.starttls()
-            server.login(SMTP_USER, SMTP_PASS)
-            server.send_message(msg)
+        headers = {
+            "accept": "application/json",
+            "api-key": BREVO_API_KEY,
+            "content-type": "application/json"
+        }
 
-        logger.info("✅ Email sent successfully")
+        payload = {
+            "sender": {
+                "email": EMAIL_FROM,
+                "name": "Assignment Tracker"
+            },
+            "to": [
+                {"email": to}
+            ],
+            "subject": subject,
+            "htmlContent": body
+        }
+
+        response = requests.post(url, headers=headers, json=payload)
+
+        if response.status_code == 201:
+            logging.info("✅ Email sent successfully")
+        else:
+            logging.error(f"❌ Brevo error: {response.text}")
 
     except Exception as e:
-        logger.error(f"❌ EMAIL ERROR: {e}")
+        logging.error(f"❌ EMAIL ERROR: {e}")
 
 
 
