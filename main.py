@@ -879,27 +879,35 @@ def manual_sync():
     return jsonify({"success": True})
 
 
-# -------------------- AUTO SYNC --------------------
-def auto_sync_loop():
-    while True:
-        logger.info("⏳ Waiting for next auto sync...")
-        time.sleep(AUTO_SYNC_INTERVAL)
+# -------------------- AUTO SYNC SCHEDULER --------------------#
 
-        logger.info("🔁 Running auto sync...")
+from apscheduler.schedulers.background import BackgroundScheduler
+scheduler = BackgroundScheduler()
 
-        conn = sqlite3.connect("assignments.db")
-        conn.row_factory = sqlite3.Row
-        cur = conn.cursor()
+def auto_sync_all_users():
+    logger.info("🔁 Auto sync scheduler triggered")
 
-        users = cur.execute("SELECT * FROM users").fetchall()
-        conn.close()
+    conn = sqlite3.connect("assignments.db")
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
 
-        for u in users:
-            sync_user_assignments(dict(u))
+    users = cur.execute("SELECT * FROM users").fetchall()
+    conn.close()
 
+    for u in users:
+        threading.Thread(
+            target=sync_user_assignments,
+            args=(dict(u),),
+            daemon=True
+        ).start()
 
-# -------------------- START --------------------
-threading.Thread(target=auto_sync_loop, daemon=True).start()
+scheduler.add_job(
+    auto_sync_all_users,
+    "interval",
+    minutes=10
+)
+
+scheduler.start()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
