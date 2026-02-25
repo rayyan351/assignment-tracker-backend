@@ -7,3 +7,4 @@ flask-cors
 pyjwt
 gunicorn
 apscheduler
+psycopg2-binary
