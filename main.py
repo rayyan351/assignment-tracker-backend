@@ -75,7 +75,7 @@ def root():
 
 # -------------------- DATABASE --------------------
 def init_db():
-    conn = psycopg2.connect(os.getenv("DATABASE_URL"))
+    conn = psycopg2.connect(os.environ["DATABASE_URL"], sslmode="require")
     cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     cur.execute("""
     CREATE TABLE IF NOT EXISTS users (
@@ -143,7 +143,7 @@ def init_db():
 
 
 def get_db():
-    return psycopg2.connect(os.getenv("DATABASE_URL"))
+    return psycopg2.connect(os.environ["DATABASE_URL"], sslmode="require")
 
 
 init_db()
