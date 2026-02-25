@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 import os
 import time
 import sqlite3
@@ -894,12 +895,13 @@ def auto_sync_all_users():
     users = cur.execute("SELECT * FROM users").fetchall()
     conn.close()
 
-    for u in users:
-        threading.Thread(
-            target=sync_user_assignments,
-            args=(dict(u),),
-            daemon=True
-        ).start()
+    from concurrent.futures import ThreadPoolExecutor
+
+    MAX_WORKERS = 3
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        for u in users:
+            executor.submit(sync_user_assignments, dict(u))
 
 scheduler.add_job(
     auto_sync_all_users,

@@ -7,6 +7,7 @@ from main import sync_user_assignments
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
+    force=True
 )
 
 AUTO_SYNC_INTERVAL = 600  # 10 minutes
@@ -32,7 +33,7 @@ def run_sync_cycle():
 
 def worker_loop():
 
-    logging.info("🚀 Worker started")
+    logging.info("🚀 LMS Worker started and running...")
 
     while True:
 

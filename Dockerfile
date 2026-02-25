@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 10000
 
-CMD ["gunicorn", "main:app", "--bind", "0.0.0.0:10000", "--workers", "2", "--threads", "4"]
+CMD bash -c "python worker.py & gunicorn main:app --bind 0.0.0.0:10000 --workers 1 --threads 4"
